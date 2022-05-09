@@ -11,7 +11,7 @@ const Publish = ({ token }) => {
   const [color, setColor] = useState("");
   const [condition, setCondition] = useState("");
   const [city, setCity] = useState("");
-  const [prix, setPrice] = useState("");
+  const [price, setPrice] = useState("");
   const [exchange, setExchange] = useState(false);
 
   return (
@@ -23,7 +23,7 @@ const Publish = ({ token }) => {
           e.preventDefault();
 
           const formData = new FormData();
-          // formData.append("files", file);
+          formData.append("files", file);
           formData.append("product_name", title);
           formData.append("product_description", description);
 
@@ -72,19 +72,21 @@ const Publish = ({ token }) => {
             <div>
               <input
                 type="text"
-                name="article-title"
-                id="article-title"
+                name="product_name"
+                id="product_name"
                 placeholder="ex: Green funky shirt"
                 onChange={(event) => setTitle(event.target.value)}
+                value={title}
               ></input>
             </div>
             <div>
               <input
                 type="text"
-                name="article-description"
-                id="article-description"
+                name="product_description"
+                id="product_description"
                 placeholder="ex: only worn couple times, great for party, very shiny"
                 onChange={(event) => setDescription(event.target.value)}
+                value={description}
               ></input>
             </div>
           </div>
@@ -105,6 +107,7 @@ const Publish = ({ token }) => {
                 id="article-brand"
                 placeholder="ex: Volcom"
                 onChange={(event) => setBrand(event.target.value)}
+                value={brand}
               ></input>
             </div>
             <div>
@@ -114,6 +117,7 @@ const Publish = ({ token }) => {
                 id="article-size"
                 placeholder="ex: XL"
                 onChange={(event) => setSize(event.target.value)}
+                value={size}
               ></input>
             </div>
             <div>
@@ -123,6 +127,7 @@ const Publish = ({ token }) => {
                 id="article-color"
                 placeholder="ex: purple"
                 onChange={(event) => setColor(event.target.value)}
+                value={color}
               ></input>
             </div>
             <div>
@@ -132,6 +137,7 @@ const Publish = ({ token }) => {
                 id="article-condition"
                 placeholder="ex: Worn only twice"
                 onChange={(event) => setCondition(event.target.value)}
+                value={condition}
               ></input>
             </div>
             <div>
@@ -141,6 +147,7 @@ const Publish = ({ token }) => {
                 id="article-city"
                 placeholder="ex: Berlin"
                 onChange={(event) => setCity(event.target.value)}
+                value={city}
               ></input>
             </div>
           </div>
@@ -153,10 +160,11 @@ const Publish = ({ token }) => {
             <div>
               <input
                 type="text"
-                name="article-price"
-                id="article-price"
+                name="product_price"
+                id="product_price"
                 placeholder="0.00 €"
                 onChange={(event) => setPrice(event.target.value)}
+                value={price}
               ></input>
             </div>
             <div>
@@ -165,6 +173,7 @@ const Publish = ({ token }) => {
                 name="exchange"
                 id="exchange"
                 onChange={(event) => setExchange(event.target.checked)}
+                value={exchange}
               ></input>
               <span>Interested in exchange ?</span>
             </div>
