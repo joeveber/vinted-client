@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import About from "./pages/About";
+import Publish from "./pages/Publish/Publish";
 
 //components
 import Signup from "./components/Signup/Signup.js";
@@ -50,6 +51,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/publish" element={<Publish />} token={token} />
         <Route path="/offer/:id" element={<Offer />} />
       </Routes>
     </Router>

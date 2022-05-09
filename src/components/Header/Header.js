@@ -31,11 +31,13 @@ const Header = ({ setHide1, setHide2, token, setUser }) => {
               setUser(null);
             }}
           >
-            Se déconnecter
+            Sign out
           </button>
         )}
 
-        <button>Sell your articles</button>
+        <Link to="/publish">
+          <button>Sell your articles</button>
+        </Link>
       </div>
       <nav>
         <span>
