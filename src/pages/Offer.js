@@ -11,14 +11,14 @@ const Offer = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `https://lereacteur-vinted-api.herokuapp.com/offers/${id}`
+        `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
       );
       console.log(response.data);
       setData(response.data);
       setIsLoading(false);
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   return isLoading === true ? (
     <div>Downloading...</div>

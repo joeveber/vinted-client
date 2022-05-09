@@ -6,27 +6,31 @@ const Home = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
+  const [page, setPage] = useState(1);
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "https://lereacteur-vinted-api.herokuapp.com/offers"
+        `https://lereacteur-vinted-api.herokuapp.com/offers?limit=3&page=${page}`
       );
       console.log(response.data);
       setData(response.data);
       setIsLoading(false);
     };
     fetchData();
-  }, []);
+  }, [page]);
 
   return isLoading === true ? (
     <div>Downloading...</div>
   ) : (
     <div>
       <div>Data Loaded</div>
-      <h2>{data.offers[0].product_name}</h2>
+
+      <button onClick={() => setPage(page - 1)}>Page précédente</button>
+      <button onClick={() => setPage(page + 1)}>Page suivante</button>
+
       {data.offers.map((offer) => {
         return (
-          <Link to={`{}`}>
+          <Link to={`/offer/${offer._id}`} key={offer._id}>
             <div className="card">
               <h2>{offer.product_name}</h2>
               <img

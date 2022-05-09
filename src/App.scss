@@ -4,14 +4,7 @@
   box-sizing: border-box;
 }
 
-header {
-  height: 120px;
-  background-color: aqua;
-  display: flex;
-  justify-content: space-evenly;
-  
-   img {
-    height: 100%;
-  }
-
+.hidden {
+  display: none;
 }
+
