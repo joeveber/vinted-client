@@ -11,9 +11,7 @@ const Home = () => {
   const [page, setPage] = useState(1);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(
-        `https://lereacteur-vinted-api.herokuapp.com/offers?limit=8&page=${page}`
-      );
+      const response = await axios.get("http://localhost:4000/offers");
       console.log(response.data);
       setData(response.data);
       setIsLoading(false);
@@ -36,11 +34,12 @@ const Home = () => {
               <div className="card">
                 <img
                   className="article-image"
-                  src={offer.product_image.secure_url}
+                  src={offer.product_pictures.secure_url}
                   alt=""
                 />
                 <p>{offer.product_price} €</p>
                 <p>{offer.product_name}</p>
+                <p>{offer.product_description}</p>
               </div>
             </Link>
           );

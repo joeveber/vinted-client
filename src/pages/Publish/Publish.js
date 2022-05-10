@@ -1,9 +1,9 @@
 import "./Publish.scss";
 import { useState } from "react";
 import axios from "axios";
-// import { Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-const Publish = ({ token }) => {
+const Publish = (token, setHide2) => {
   const [picture, setPicture] = useState({});
   const [title, setTitle] = useState("Chemise");
   const [description, setDescription] = useState("Très belle chemise");
@@ -14,9 +14,7 @@ const Publish = ({ token }) => {
   const [city, setCity] = useState("Paris");
   const [price, setPrice] = useState(45);
   const [exchange, setExchange] = useState(false);
-
-  const userToken =
-    "FPhUfbTyRUynbCXuFeF7KHHhzXTDiRGzo60te6CAanDrE2fOjNkvOCBAZsnyKQ4v";
+  console.log(token);
 
   const handleSubmit = async (event) => {
     try {
@@ -28,17 +26,17 @@ const Publish = ({ token }) => {
       formData.append("price", price);
 
       const response = await axios.post(
-        "http://localhost:4000/publish",
-        // "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+        "http://localhost:4000/offer/publish",
         formData,
         {
           headers: {
-            Authorization: "Bearer " + userToken,
+            authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",
           },
         }
       );
       console.log(response.data);
+      console.log(token);
     } catch (error) {
       if (error.response.status === 500) {
         console.error("An error occurred");
@@ -49,14 +47,8 @@ const Publish = ({ token }) => {
   };
 
   return (
-    //Ajouter ternaire token === true ? page : < Navigate to="/login" />
     <div>
-      <form
-        className="container"
-        ////--
-        onSubmit={handleSubmit}
-        ////--
-      >
+      <form className="container" onSubmit={handleSubmit}>
         <h1>Sell your article</h1>
         <section className="product-photos">
           <label id="upload-button" className="custom-file-upload">

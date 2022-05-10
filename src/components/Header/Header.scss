@@ -30,15 +30,14 @@ header {
       background-color: #2CB1BA;
       color: white;
       border: none;
-      
     }
 
     .part-1 {
       height: inherit;
       margin-left: 50px;
 
-      img {
-        height: inherit;
+      img{
+        height: 120px;
       }
     }
 
@@ -60,6 +59,4 @@ header {
       flex:1;
       margin-right: 50px;
     }
-
-
   }

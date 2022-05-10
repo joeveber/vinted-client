@@ -6,7 +6,9 @@ const Header = ({ setHide1, setHide2, token, setUser }) => {
   return (
     <header>
       <div className="part-1">
-        <img className="logo" src={logo} alt="logo-vinted" />
+        <Link to="/">
+          <img className="logo pointer" src={logo} alt="logo-vinted" />
+        </Link>
       </div>
 
       <div className="part-2">
@@ -16,7 +18,7 @@ const Header = ({ setHide1, setHide2, token, setUser }) => {
         {token === null ? (
           <div>
             <button
-              className="header-button"
+              className="header-button pointer"
               onClick={() => {
                 setHide1(false);
               }}
@@ -24,7 +26,7 @@ const Header = ({ setHide1, setHide2, token, setUser }) => {
               Sign up
             </button>
             <button
-              className="header-button"
+              className="header-button pointer"
               onClick={() => {
                 setHide2(false);
               }}
@@ -35,7 +37,7 @@ const Header = ({ setHide1, setHide2, token, setUser }) => {
         ) : (
           <button
             //No more cookie?
-            className="header-button-variation"
+            className="header-button-variation pointer"
             onClick={() => {
               setUser(null);
             }}
@@ -46,7 +48,7 @@ const Header = ({ setHide1, setHide2, token, setUser }) => {
       </div>
       <div className="part-4">
         <Link to="/publish">
-          <button className="header-button-variation">
+          <button className="header-button-variation pointer">
             Sell your articles
           </button>
         </Link>
