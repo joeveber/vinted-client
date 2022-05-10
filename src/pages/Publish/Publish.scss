@@ -7,7 +7,9 @@
     font-family: sans-serif;
   }
 
-
+.background {
+    background-color: #EBEDEE;
+}
 
 .container{
     margin: 0 3rem;
@@ -47,6 +49,9 @@ section {
 .product-photos {
     align-items: center;
     justify-content: center;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 30px;
 
     #file-upload {
         display: none;
@@ -68,11 +73,14 @@ section {
     
 }
 
-.add-product {
+.add-article {
     align-items: center;
     justify-content:center;
     input {
         height: 50px;
         width: 150px;
+        background-color:  aqua;
+        border-radius: 10px;
+        
     }
 }

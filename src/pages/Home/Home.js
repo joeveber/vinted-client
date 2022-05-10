@@ -11,10 +11,13 @@ const Home = () => {
   const [page, setPage] = useState(1);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:4000/offers");
+      const response = await axios.get(
+        `http://localhost:4000/offers?limit=6&page=${page}`
+      );
       console.log(response.data);
       setData(response.data);
       setIsLoading(false);
+      console.log("check");
     };
     fetchData();
   }, [page]);
@@ -37,7 +40,7 @@ const Home = () => {
                   src={offer.product_pictures.secure_url}
                   alt=""
                 />
-                <p>{offer.product_price} €</p>
+                <p className="price-text">{offer.product_price} €</p>
                 <p>{offer.product_name}</p>
                 <p>{offer.product_description}</p>
               </div>
@@ -45,9 +48,13 @@ const Home = () => {
           );
         })}
       </div>
-      <div>
-        <button onClick={() => setPage(page - 1)}>Page précédente</button>
-        <button onClick={() => setPage(page + 1)}>Page suivante</button>
+      <div className="page-selector">
+        <button className="page-button" onClick={() => setPage(page - 1)}>
+          Page précédente
+        </button>
+        <button className="page-button" onClick={() => setPage(page + 1)}>
+          Page suivante
+        </button>
       </div>
     </div>
   );

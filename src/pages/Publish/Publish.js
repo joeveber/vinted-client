@@ -1,9 +1,8 @@
 import "./Publish.scss";
 import { useState } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
 
-const Publish = (token, setHide2) => {
+const Publish = ({ token, setHide2 }) => {
   const [picture, setPicture] = useState({});
   const [title, setTitle] = useState("Chemise");
   const [description, setDescription] = useState("Très belle chemise");
@@ -14,6 +13,9 @@ const Publish = (token, setHide2) => {
   const [city, setCity] = useState("Paris");
   const [price, setPrice] = useState(45);
   const [exchange, setExchange] = useState(false);
+
+  const [preview, setPreview] = useState(null);
+
   console.log(token);
 
   const handleSubmit = async (event) => {
@@ -23,7 +25,13 @@ const Publish = (token, setHide2) => {
       formData.append("picture", picture);
       formData.append("title", title);
       formData.append("description", description);
+      formData.append("brand", brand);
+      formData.append("size", size);
+      formData.append("color", color);
+      formData.append("condition", condition);
+      formData.append("city", city);
       formData.append("price", price);
+      formData.append("exchange", exchange);
 
       const response = await axios.post(
         "http://localhost:4000/offer/publish",
@@ -47,7 +55,7 @@ const Publish = (token, setHide2) => {
   };
 
   return (
-    <div>
+    <div className="background">
       <form className="container" onSubmit={handleSubmit}>
         <h1>Sell your article</h1>
         <section className="product-photos">
@@ -57,11 +65,13 @@ const Publish = (token, setHide2) => {
               type="file"
               onChange={(event) => {
                 setPicture(event.target.files[0]);
+                setPreview(URL.createObjectURL(event.target.files[0]));
                 /// add image preview
               }}
             />
             Add a picture
           </label>
+          <img src={preview} style={{ width: "200px" }} alt="" />
         </section>
         <section className="product-description">
           <div className="col-1">
@@ -78,12 +88,12 @@ const Publish = (token, setHide2) => {
               ></input>
             </div>
             <div>
-              <input
-                type="text"
+              <textarea
                 value={description}
+                rows="3"
                 placeholder="ex: only worn couple times, great for party, very shiny"
                 onChange={(event) => setDescription(event.target.value)}
-              ></input>
+              ></textarea>
             </div>
           </div>
         </section>
@@ -157,12 +167,12 @@ const Publish = (token, setHide2) => {
                 value={exchange}
                 onChange={(event) => setExchange(event.target.checked)}
               ></input>
-              <span>Interested in exchange ?</span>
+              <span>Interested in an exchange ?</span>
             </div>
           </div>
         </section>
-        <section className="add-product">
-          <input type="submit" value="Add picture" />
+        <section className="add-article">
+          <input type="submit" value="Add your article" />
         </section>
       </form>
     </div>

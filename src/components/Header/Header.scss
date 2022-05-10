@@ -28,7 +28,6 @@ header {
       height: 28px;
       border-radius: 7px;
       background-color: #2CB1BA;
-      color: white;
       border: none;
     }
 
@@ -47,6 +46,7 @@ header {
     }
     .part-3 {
       flex:1;
+      padding: 15px;
 
       div {
         display: flex;
@@ -58,5 +58,6 @@ header {
     .part-4 {
       flex:1;
       margin-right: 50px;
+      padding: 15px;
     }
   }
