@@ -5,11 +5,18 @@ import logo from "/Users/joeveber/LeReacteur/4-React/vinted-client/src/assets/lo
 const Header = ({ setHide1, setHide2, token, setUser }) => {
   return (
     <header>
-      <div>
-        <img src={logo} alt="logo" />
+      <div className="part-1">
+        <img className="logo" src={logo} alt="logo-vinted" />
+      </div>
+
+      <div className="part-2">
+        <p>Search bar and filter</p>
+      </div>
+      <div className="part-3">
         {token === null ? (
           <div>
             <button
+              className="header-button"
               onClick={() => {
                 setHide1(false);
               }}
@@ -17,6 +24,7 @@ const Header = ({ setHide1, setHide2, token, setUser }) => {
               Sign up
             </button>
             <button
+              className="header-button"
               onClick={() => {
                 setHide2(false);
               }}
@@ -27,6 +35,7 @@ const Header = ({ setHide1, setHide2, token, setUser }) => {
         ) : (
           <button
             //No more cookie?
+            className="header-button-variation"
             onClick={() => {
               setUser(null);
             }}
@@ -34,17 +43,14 @@ const Header = ({ setHide1, setHide2, token, setUser }) => {
             Sign out
           </button>
         )}
-
+      </div>
+      <div className="part-4">
         <Link to="/publish">
-          <button>Sell your articles</button>
+          <button className="header-button-variation">
+            Sell your articles
+          </button>
         </Link>
       </div>
-      <nav>
-        <span>
-          <Link to="/">Home </Link>
-          <Link to="/about">About </Link>
-        </span>
-      </nav>
     </header>
   );
 };

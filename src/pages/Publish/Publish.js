@@ -1,63 +1,71 @@
 import "./Publish.scss";
 import { useState } from "react";
 import axios from "axios";
+// import { Navigate } from "react-router-dom";
 
 const Publish = ({ token }) => {
-  const [file, setFile] = useState({});
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [brand, setBrand] = useState("");
-  const [size, setSize] = useState("");
-  const [color, setColor] = useState("");
-  const [condition, setCondition] = useState("");
-  const [city, setCity] = useState("");
-  const [price, setPrice] = useState("");
+  const [picture, setPicture] = useState({});
+  const [title, setTitle] = useState("Chemise");
+  const [description, setDescription] = useState("Très belle chemise");
+  const [brand, setBrand] = useState("Nike");
+  const [size, setSize] = useState("45");
+  const [color, setColor] = useState("Noir");
+  const [condition, setCondition] = useState("neuve");
+  const [city, setCity] = useState("Paris");
+  const [price, setPrice] = useState(45);
   const [exchange, setExchange] = useState(false);
 
+  const userToken =
+    "FPhUfbTyRUynbCXuFeF7KHHhzXTDiRGzo60te6CAanDrE2fOjNkvOCBAZsnyKQ4v";
+
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      const formData = new FormData();
+      formData.append("picture", picture);
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("price", price);
+
+      const response = await axios.post(
+        "http://localhost:4000/publish",
+        // "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+        formData,
+        {
+          headers: {
+            Authorization: "Bearer " + userToken,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(response.data);
+    } catch (error) {
+      if (error.response.status === 500) {
+        console.error("An error occurred");
+      } else {
+        console.error(error.response.data.msg);
+      }
+    }
+  };
+
   return (
-    <body>
+    //Ajouter ternaire token === true ? page : < Navigate to="/login" />
+    <div>
       <form
         className="container"
         ////--
-        onSubmit={async (e) => {
-          e.preventDefault();
-
-          const formData = new FormData();
-          formData.append("files", file);
-          formData.append("product_name", title);
-          formData.append("product_description", description);
-
-          try {
-            const response = await axios.post(
-              "http://localhost:4000/publish",
-              formData,
-              {
-                headers: {
-                  Authorization: "Bearer " + token,
-                  "Content-Type": "multipart/form-data",
-                },
-              }
-            );
-            console.log(response);
-            alert(JSON.stringify(response.data));
-          } catch (err) {
-            if (err.response.status === 500) {
-              console.error("An error occurred");
-            } else {
-              console.error(err.response.data.msg);
-            }
-          }
-        }}
+        onSubmit={handleSubmit}
         ////--
       >
         <h1>Sell your article</h1>
         <section className="product-photos">
-          <label id="upload-button" class="custom-file-upload">
+          <label id="upload-button" className="custom-file-upload">
             <input
               id="file-upload"
               type="file"
               onChange={(event) => {
-                setFile(event.target.files[0]);
+                setPicture(event.target.files[0]);
+                /// add image preview
               }}
             />
             Add a picture
@@ -72,21 +80,17 @@ const Publish = ({ token }) => {
             <div>
               <input
                 type="text"
-                name="product_name"
-                id="product_name"
+                value={title}
                 placeholder="ex: Green funky shirt"
                 onChange={(event) => setTitle(event.target.value)}
-                value={title}
               ></input>
             </div>
             <div>
               <input
                 type="text"
-                name="product_description"
-                id="product_description"
+                value={description}
                 placeholder="ex: only worn couple times, great for party, very shiny"
                 onChange={(event) => setDescription(event.target.value)}
-                value={description}
               ></input>
             </div>
           </div>
@@ -103,51 +107,41 @@ const Publish = ({ token }) => {
             <div>
               <input
                 type="text"
-                name="article-brand"
-                id="article-brand"
+                value={brand}
                 placeholder="ex: Volcom"
                 onChange={(event) => setBrand(event.target.value)}
-                value={brand}
               ></input>
             </div>
             <div>
               <input
                 type="text"
-                name="article-size"
-                id="article-size"
+                value={size}
                 placeholder="ex: XL"
                 onChange={(event) => setSize(event.target.value)}
-                value={size}
               ></input>
             </div>
             <div>
               <input
                 type="text"
-                name="article-color"
-                id="article-color"
+                value={color}
                 placeholder="ex: purple"
                 onChange={(event) => setColor(event.target.value)}
-                value={color}
               ></input>
             </div>
             <div>
               <input
                 type="text"
-                name="article-condition"
-                id="article-condition"
+                value={condition}
                 placeholder="ex: Worn only twice"
                 onChange={(event) => setCondition(event.target.value)}
-                value={condition}
               ></input>
             </div>
             <div>
               <input
                 type="text"
-                name="article-city"
-                id="article-city"
+                value={city}
                 placeholder="ex: Berlin"
                 onChange={(event) => setCity(event.target.value)}
-                value={city}
               ></input>
             </div>
           </div>
@@ -159,21 +153,17 @@ const Publish = ({ token }) => {
           <div className="col-2">
             <div>
               <input
-                type="text"
-                name="product_price"
-                id="product_price"
+                type="number"
+                value={price}
                 placeholder="0.00 €"
                 onChange={(event) => setPrice(event.target.value)}
-                value={price}
               ></input>
             </div>
             <div>
               <input
                 type="checkbox"
-                name="exchange"
-                id="exchange"
-                onChange={(event) => setExchange(event.target.checked)}
                 value={exchange}
+                onChange={(event) => setExchange(event.target.checked)}
               ></input>
               <span>Interested in exchange ?</span>
             </div>
@@ -183,7 +173,7 @@ const Publish = ({ token }) => {
           <input type="submit" value="Add picture" />
         </section>
       </form>
-    </body>
+    </div>
   );
 };
 

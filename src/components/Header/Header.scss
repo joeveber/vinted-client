@@ -1,21 +1,65 @@
 header {
     height: 120px;
-    background-color: aqua;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+    background-color: white;
+    position:fixed;
+    top:0;
+    width: 100vw;
     
     div {
-        display: flex;
-        width: 100%;
-        justify-content: space-evenly;
-        border: 1px solid #000;
-        height: 80%;
-        
-        
-        img {
-            height: 100%
-          } 
+      height: inherit;
+      border: 1px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
     }
+
+    .header-button {
+      width: 113px;
+      height: 28px;
+      border-radius: 7px;
+      background-color: white;
+      color: #2CB1BA;
+      border-color: #2CB1BA;
+    }
+    .header-button-variation {
+      width: 113px;
+      height: 28px;
+      border-radius: 7px;
+      background-color: #2CB1BA;
+      color: white;
+      border: none;
+      
+    }
+
+    .part-1 {
+      height: inherit;
+      margin-left: 50px;
+
+      img {
+        height: inherit;
+      }
+    }
+
+    .part-2 {
+      flex:4;
+      
+    }
+    .part-3 {
+      flex:1;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+      }
+      
+    }
+    .part-4 {
+      flex:1;
+      margin-right: 50px;
+    }
+
+
   }

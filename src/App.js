@@ -4,9 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Cookies from "js-cookie";
 
 // pages
-import Home from "./pages/Home";
-import Offer from "./pages/Offer";
-import About from "./pages/About";
+import Home from "./pages/Home/Home";
+import Offer from "./pages/Offer/Offer";
 import Publish from "./pages/Publish/Publish";
 
 //components
@@ -50,8 +49,7 @@ function App() {
       <Signin hide2={hide2} setHide2={setHide2} setUser={setUser} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/publish" element={<Publish />} token={token} />
+        <Route path="/publish" element={<Publish token={token} />} />
         <Route path="/offer/:id" element={<Offer />} />
       </Routes>
     </Router>
