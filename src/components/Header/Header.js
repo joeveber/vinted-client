@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Header.scss";
 import logo from "/Users/joeveber/LeReacteur/4-React/vinted-client/src/assets/logo-vinted.jpeg";
 
 const Header = ({ setHide1, setHide2, token, setUser }) => {
+  const navigate = useNavigate();
+
   return (
     <header>
       <div className="part-1">
@@ -47,11 +49,17 @@ const Header = ({ setHide1, setHide2, token, setUser }) => {
         )}
       </div>
       <div className="part-4">
-        <Link to="/publish">
-          <button className="header-button-variation pointer">
-            Sell your articles
-          </button>
-        </Link>
+        {/* <Link to="/publish"> */}
+        <button
+          className="header-button-variation pointer"
+          onClick={() => {
+            token ? navigate("/publish") : alert("Please sign in first");
+            token ? navigate("/publish") : setHide2(false);
+          }}
+        >
+          Sell your articles
+        </button>
+        {/* </Link> */}
       </div>
     </header>
   );

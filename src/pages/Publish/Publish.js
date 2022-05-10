@@ -4,19 +4,17 @@ import axios from "axios";
 
 const Publish = ({ token, setHide2 }) => {
   const [picture, setPicture] = useState({});
-  const [title, setTitle] = useState("Chemise");
-  const [description, setDescription] = useState("Très belle chemise");
-  const [brand, setBrand] = useState("Nike");
-  const [size, setSize] = useState("45");
-  const [color, setColor] = useState("Noir");
-  const [condition, setCondition] = useState("neuve");
-  const [city, setCity] = useState("Paris");
-  const [price, setPrice] = useState(45);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [brand, setBrand] = useState("");
+  const [size, setSize] = useState("");
+  const [color, setColor] = useState("");
+  const [condition, setCondition] = useState("");
+  const [city, setCity] = useState("");
+  const [price, setPrice] = useState(0);
   const [exchange, setExchange] = useState(false);
 
   const [preview, setPreview] = useState(null);
-
-  console.log(token);
 
   const handleSubmit = async (event) => {
     try {
@@ -66,7 +64,6 @@ const Publish = ({ token, setHide2 }) => {
               onChange={(event) => {
                 setPicture(event.target.files[0]);
                 setPreview(URL.createObjectURL(event.target.files[0]));
-                /// add image preview
               }}
             />
             Add a picture

@@ -2,7 +2,7 @@ import "./Signin.scss";
 import axios from "axios";
 import { useState } from "react";
 
-const Signin = ({ hide2, setHide2, setUser }) => {
+const Signin = ({ hide2, setHide1, setHide2, setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -56,6 +56,14 @@ const Signin = ({ hide2, setHide2, setUser }) => {
             ></input>
             <input type="submit" value="Sign in"></input>
           </form>
+          <button
+            onClick={() => {
+              setHide2(true);
+              setHide1(false);
+            }}
+          >
+            No account yet? Click here to sign up.
+          </button>
         </div>
       </div>
     </div>

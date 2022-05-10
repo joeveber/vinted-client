@@ -3,7 +3,7 @@ import { useState } from "react";
 // import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const Signup = ({ hide1, setHide1 }) => {
+const Signup = ({ hide1, setHide1, setHide2 }) => {
   const [username, setUsername] = useState("joey");
   const [email, setEmail] = useState("joey@lereacteur.io");
   const [password, setPassword] = useState("azerty");
@@ -86,9 +86,17 @@ const Signup = ({ hide1, setHide1 }) => {
               <p>Newsletter</p>
             </div>
 
-            <input type="submit" value="Sign in"></input>
+            <input className="pointer" type="submit" value="Sign up"></input>
             <p>{errorMessage}</p>
           </form>
+          <button
+            onClick={() => {
+              setHide2(false);
+              setHide1(true);
+            }}
+          >
+            Already have an account? Sign in here.
+          </button>
         </div>
       </div>
     </div>

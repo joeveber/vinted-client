@@ -1,0 +1,48 @@
+.container3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 120px;
+
+
+    .rightside {
+        padding: 30px;
+        height:400px;
+        margin: 30px;
+        flex:1;
+        border: 1px solid #000;
+        display: flex;
+        align-items: center;
+        img {
+            max-height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+    .leftside {
+        padding: 30px;
+        height:400px;
+        margin: 30px;
+        flex:1;
+        border: 1px solid #000;
+        background-color: white
+    }
+}
+
+.price {
+    color: grey;
+    font-size: 25px;
+    margin: 10px;
+}
+
+.grey {
+    color: grey;
+}
+
+
+.buy-button {
+    height: 30px;
+    width: 150px;
+    background-color: lightseagreen;
+    border-radius: 10px;
+}

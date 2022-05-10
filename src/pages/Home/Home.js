@@ -49,12 +49,20 @@ const Home = () => {
         })}
       </div>
       <div className="page-selector">
-        <button className="page-button" onClick={() => setPage(page - 1)}>
-          Page précédente
-        </button>
-        <button className="page-button" onClick={() => setPage(page + 1)}>
-          Page suivante
-        </button>
+        {page === 1 ? (
+          <button className="page-button" onClick={() => setPage(page + 1)}>
+            Next page
+          </button>
+        ) : (
+          <div>
+            <button className="page-button" onClick={() => setPage(page - 1)}>
+              Previous page
+            </button>
+            <button className="page-button" onClick={() => setPage(page + 1)}>
+              Next page
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

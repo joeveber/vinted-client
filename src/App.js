@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 import Home from "./pages/Home/Home";
 import Offer from "./pages/Offer/Offer";
 import Publish from "./pages/Publish/Publish";
+import Payment from "./pages/Payment/Payment";
 
 //components
 import Signup from "./components/Signup/Signup.js";
@@ -45,12 +46,18 @@ function App() {
         token={token}
         setUser={setUser}
       />
-      <Signup hide1={hide1} setHide1={setHide1} />
-      <Signin hide2={hide2} setHide2={setHide2} setUser={setUser} />
+      <Signup hide1={hide1} setHide1={setHide1} setHide2={setHide2} />
+      <Signin
+        hide2={hide2}
+        setHide1={setHide1}
+        setHide2={setHide2}
+        setUser={setUser}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/publish" element={<Publish token={token} />} />
         <Route path="/offer/:id" element={<Offer />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
     </Router>
   );
