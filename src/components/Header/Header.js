@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.scss";
-import logo from "/Users/joeveber/LeReacteur/4-React/vinted-client/src/assets/logo-vinted.jpeg";
+import logo from "../../assets/logo-vinted.jpeg";
 
 const Header = ({ setHide1, setHide2, token, setUser }) => {
   const navigate = useNavigate();
