@@ -5,6 +5,7 @@ export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
+  // --- Add confrmation message
   const handlePayment = async (event) => {
     event.preventDefault();
     // Etape 1 : envoi du numéro de carte à stripe
@@ -18,6 +19,7 @@ export default function CheckoutForm() {
     //Etape 3: envoie du token à mon serveur
     const response = await axios.post("http://localhost:4000/payment", {
       stripeToken: stripeResponse.token.id,
+      //-add price and title here
     });
     console.log(response.data);
     if (response.data.status === "succeeded") {
