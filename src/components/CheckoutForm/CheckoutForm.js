@@ -5,7 +5,7 @@ export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
-  const handleSubmit = async (event) => {
+  const handlePayment = async (event) => {
     event.preventDefault();
     // Etape 1 : envoi du numéro de carte à stripe
     //Récupérer les données de cb
@@ -26,7 +26,7 @@ export default function CheckoutForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handlePayment}>
       <h1>Test !</h1>
       <CardElement />
       <input type="submit" />

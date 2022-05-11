@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Home.scss";
-import banner from "/Users/joeveber/LeReacteur/4-React/vinted-client/src/assets/banner-wide.jpeg";
+import banner from "../../assets/banner-wide.jpeg";
 
 const Home = () => {
   const [data, setData] = useState();
