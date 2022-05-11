@@ -11,7 +11,9 @@ const Offer = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`http://localhost:4000/offer/${id}`);
+      const response = await axios.get(
+        `https://my-lovely-vinted.herokuapp.com/offer/${id}`
+      );
       console.log(response.data);
       setData(response.data);
       setIsLoading(false);
@@ -51,7 +53,14 @@ const Offer = () => {
         <p className="grey">{data.product_size}</p>
         <br />
         <br />
-        <Link to="/Payment">
+        <Link
+          to="/Payment"
+          state={{
+            title: data.product_name,
+            price: data.product_price,
+            picture: data.product_pictures.secure_url,
+          }}
+        >
           <button className="buy-button pointer"> Buy</button>
         </Link>
       </div>

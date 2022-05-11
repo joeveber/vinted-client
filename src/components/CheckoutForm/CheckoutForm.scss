@@ -1,0 +1,32 @@
+#payment-window {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    width: 300px;
+
+    #card-elements {
+        width: 300px;
+        margin-bottom: 15px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    img {
+        width: 80%;
+        margin: 15px 0;
+    }
+
+    #payment-button {
+        background-color: green;
+        color: white;
+        margin-bottom: 15px;
+        height: 2rem;
+        width: 13rem;
+        border-radius: 0.5rem;
+    }
+}

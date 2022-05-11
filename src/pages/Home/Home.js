@@ -12,7 +12,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `http://localhost:4000/offers?limit=6&page=${page}`
+        `https://my-lovely-vinted.herokuapp.com/offers?limit=10&page=${page}`
       );
       console.log(response.data);
       setData(response.data);

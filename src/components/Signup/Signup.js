@@ -17,12 +17,15 @@ const Signup = ({ hide1, setHide1, setHide2 }) => {
       // Error message reset at each attempt
       setErrorMessage("");
       // Request sent to server to create a new user axios.post("url",body)
-      const response = await axios.post("http://localhost:4000/user/signup", {
-        email: email,
-        username: username,
-        password: password,
-        newsletter: newsletter,
-      });
+      const response = await axios.post(
+        "https://my-lovely-vinted.herokuapp.com/user/signup",
+        {
+          email: email,
+          username: username,
+          password: password,
+          newsletter: newsletter,
+        }
+      );
       console.log(response.data);
 
       if (response.data) {

@@ -1,7 +1,8 @@
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
+import "./CheckoutForm.scss";
 
-export default function CheckoutForm() {
+export default function CheckoutForm({ title, price, picture }) {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -17,10 +18,13 @@ export default function CheckoutForm() {
     console.log(stripeResponse);
 
     //Etape 3: envoie du token à mon serveur
-    const response = await axios.post("http://localhost:4000/payment", {
-      stripeToken: stripeResponse.token.id,
-      //-add price and title here
-    });
+    const response = await axios.post(
+      "https://my-lovely-vinted.herokuapp.com/payment",
+      {
+        stripeToken: stripeResponse.token.id,
+        //-add price and title here
+      }
+    );
     console.log(response.data);
     if (response.data.status === "succeeded") {
       console.log("Payment succeeded !!");
@@ -28,10 +32,20 @@ export default function CheckoutForm() {
   };
 
   return (
-    <form onSubmit={handlePayment}>
-      <h1>Test !</h1>
-      <CardElement />
-      <input type="submit" />
-    </form>
+    <div id="payment-window">
+      <form onSubmit={handlePayment}>
+        <h1>{title}</h1>
+        <p>{price} €</p>
+        <img src={picture} alt="articlePicture" />
+        <div id="card-elements">
+          <CardElement />
+        </div>
+        <input
+          id="payment-button"
+          type="submit"
+          value="Give me all your money"
+        />
+      </form>
+    </div>
   );
 }
